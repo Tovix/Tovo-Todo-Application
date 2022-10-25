@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tovo/modules/flower_login/flowerLogin.dart';
-import 'package:tovo/modules/flower_register/flowerRegister.dart';
-import 'package:tovo/modules/test.dart';
+// import 'package:tovo/modules/flower_register/flowerRegister.dart';
+// import 'package:tovo/modules/test.dart';
 import 'package:tovo/shared/TovoCubit/TovoCubit.dart';
 import 'package:tovo/shared/TovoCubit/TovoCubitStates.dart';
 import 'package:tovo/shared/network/local/cache_helper.dart';
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                       headline6: TextStyle(color: Color(0xFF150811))),
                   bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Color(0xFF262730))),
               themeMode: flowerCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-              home: testScreen(),
+              home: flowerLogin(),
               scrollBehavior: MyBehavior(),
 
         );

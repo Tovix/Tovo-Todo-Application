@@ -26,25 +26,35 @@ class testScreen extends StatelessWidget {
         body: Column(children:
         [
           Padding(
-            padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Container(
-              padding: const EdgeInsets.fromLTRB(15, 20, 15, 15),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).textTheme.headline2?.color,
                   border: Border.all(color: Color(0xFF6b54fe), width: 3)),
-              child: Row(children:
-              [
-                Icon(Iconsax.task, color: Color(0xFF6b54fe), size: 20,),
-                SizedBox(width: 5,),
-                Text("TOVO", textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF6b54fe),
-                    fontWeight: FontWeight.bold, fontSize: 20),),
-
-
-              ],)
-              , ),
+              child: Row(
+                children: [
+                  Icon(
+                    Iconsax.task,
+                    color: Color(0xFF6b54fe),
+                    size: 20,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "TOVO",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Color(0xFF6b54fe), fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
           ),
-          Image.asset("assets/images/login6.png", scale: 2.7,),
+          Expanded(flex:2, child: Image.asset("assets/images/login6.png", scale: 2.7,)),
           Expanded(
+            flex:7,
             child: Padding(
               padding: EdgeInsets.all(25),
               child: Column(
@@ -69,80 +79,93 @@ class testScreen extends StatelessWidget {
                               child: Row(children:
                               [
                                 Text("Register", textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF6b54fe),
-                                    fontWeight: FontWeight.bold, fontSize: 20),),
+                                    fontWeight: FontWeight.bold, fontSize: 17),),
                                 SizedBox(width: 5,),
                                 Icon(Icons.app_registration_outlined, color: Color(0xFF6b54fe)),
 
                               ],)
                               , ),
                           ),
-                          Form
-                            (child: Column(children:
-                          [
-                            defaultTextField(controller: userNameController, type: TextInputType.text, label: "Enter your username",
-                                prefixIcon: Icon(Iconsax.user_add, color: Color(0xFF6b54fe),), validateFunction: (String? value)
-                                {
-                                  if((value?.isEmpty)!)
-                                  {
-                                    return "Username is required";
-                                  }
-                                  if((value?.length)! < 10 || (value?.length)! > 16)
-                                  {
-                                    return "username length is between 10 & 16 chars";
-                                  }
-                                }),
-                            SizedBox(height: 10,),
-                            defaultTextField(controller: passwordController, type: TextInputType.text, label: "Enter your password",
-                                prefixIcon: Icon(Iconsax.password_check, color: Color(0xFF6b54fe),), obscureText: true, validateFunction: (String? value)
-                                {
-                                  if((value?.isEmpty)!)
-                                  {
-                                    return "Password is required";
-                                  }
-                                  if((value?.length)! < 10 || (value?.length)! > 20)
-                                  {
-                                    return "password length is between 10 & 20 chars";
-                                  }
+                          Expanded(
+                            flex: 5,
+                            child: Form
+                              (child: Column(children:
+                            [
+                              Expanded(
+                                child: defaultTextField(controller: userNameController, type: TextInputType.text, label: "Enter your username",
+                                    prefixIcon: Icon(Iconsax.user_add, color: Color(0xFF6b54fe),), validateFunction: (String? value)
+                                    {
+                                      if((value?.isEmpty)!)
+                                      {
+                                        return "Username is required";
+                                      }
+                                      if((value?.length)! < 10 || (value?.length)! > 16)
+                                      {
+                                        return "username length is between 10 & 16 chars";
+                                      }
+                                    }),
+                              ),
+                              SizedBox(height: 10,),
+                              Expanded(
+                                child: defaultTextField(controller: passwordController, type: TextInputType.text, label: "Enter your password",
+                                    prefixIcon: Icon(Iconsax.password_check, color: Color(0xFF6b54fe),), obscureText: true, validateFunction: (String? value)
+                                    {
+                                      if((value?.isEmpty)!)
+                                      {
+                                        return "Password is required";
+                                      }
+                                      if((value?.length)! < 10 || (value?.length)! > 20)
+                                      {
+                                        return "password length is between 10 & 20 chars";
+                                      }
 
-                                }),
-                            SizedBox(height: 10,),
-                            defaultTextField(controller: checkPasswordController, type: TextInputType.text, label: "Renter your password",
-                                prefixIcon: Icon(Icons.password_rounded, color: Color(0xFF6b54fe),), obscureText: true, validateFunction: (String? value)
-                                {
-                                  if((value?.isEmpty)!)
-                                  {
-                                    return "Password retype is required";
-                                  }
-                                  if(value != "${passwordController.text}")
-                                  {
-                                    return "Password retype must match original password";
-                                  }
-                                }),
-                            SizedBox(height: 10,),
-                            defaultTextField(controller: emailController, type: TextInputType.emailAddress, label: "Enter your Email",
-                                prefixIcon: Icon(Icons.alternate_email_outlined, color: Color(0xFF6b54fe),),validateFunction: (value)
-                                {
-                                  if((value?.isEmpty)!)
-                                  {
-                                    return "Email is required";
-                                  }
-                                  bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]"
-                                  r"+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
-                                  if(!emailValid)
-                                  {
-                                    return "please enter a valid email";
-                                  }
-                                }),
-                            SizedBox(height: 10,),
-                            defaultTextField(controller: phoneController, type: TextInputType.number, label: "Enter your phone number",
-                                prefixIcon: Icon(Icons.phone_android_rounded, color: Color(0xFF6b54fe),),validateFunction: (value)
-                                {
-                                  if((value?.isEmpty)!)
-                                  {
-                                    return "Phone number is required";
-                                  }
-                                }),
-                          ],),key: formKey, ),
+                                    }),
+                              ),
+                              SizedBox(height: 10,),
+                              Expanded(
+                                child: defaultTextField(controller: checkPasswordController, type: TextInputType.text, label: "Renter your password",
+                                    prefixIcon: Icon(Icons.password_rounded, color: Color(0xFF6b54fe),), obscureText: true, validateFunction: (String? value)
+                                    {
+                                      if((value?.isEmpty)!)
+                                      {
+                                        return "Password retype is required";
+                                      }
+                                      if(value != "${passwordController.text}")
+                                      {
+                                        return "Password retype must match original password";
+                                      }
+                                    }),
+                              ),
+                              SizedBox(height: 10,),
+                              Expanded(
+                                child: defaultTextField(controller: emailController, type: TextInputType.emailAddress, label: "Enter your Email",
+                                    prefixIcon: Icon(Icons.alternate_email_outlined, color: Color(0xFF6b54fe),),validateFunction: (value)
+                                    {
+                                      if((value?.isEmpty)!)
+                                      {
+                                        return "Email is required";
+                                      }
+                                      bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]"
+                                      r"+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                                      if(!emailValid)
+                                      {
+                                        return "please enter a valid email";
+                                      }
+                                    }),
+                              ),
+                              SizedBox(height: 10,),
+                              Expanded(
+                                child: defaultTextField(controller: phoneController, type: TextInputType.number, label: "Enter your phone number",
+                                    prefixIcon: Icon(Icons.phone_android_rounded, color: Color(0xFF6b54fe),),validateFunction: (value)
+                                    {
+                                      if((value?.isEmpty)!)
+                                      {
+                                        return "Phone number is required";
+                                      }
+                                    }),
+                              ),
+                            ],),key: formKey, ),
+                          ),
                           SizedBox(height: 15,),
                           Material(
                             child: InkWell(
@@ -174,7 +197,7 @@ class testScreen extends StatelessWidget {
                                         Text("Sign Up",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(color: Color(0xFF6b54fe),
-                                              fontWeight: FontWeight.bold, fontSize: 20),),
+                                              fontWeight: FontWeight.bold, fontSize: 17),),
                                         SizedBox(width: 5,),
                                         Icon(Iconsax.key, color: Color(0xFF6b54fe)),
 
