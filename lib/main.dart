@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tovo/modules/flower_login/flowerLogin.dart';
 // import 'package:tovo/modules/flower_register/flowerRegister.dart';
@@ -33,19 +32,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context)=>flowerCubit()..createFlowerDatabase()..getWeatherData()..initPrevLogin(),
+    return BlocProvider(create: (context)=>flowerCubit()..createFlowerDatabase()..getWeatherData()..initPrevLogin()..changeTheme(),
         child:BlocConsumer<flowerCubit, flowerStates>(
           builder: (context, state)
           {
-            SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: ThemeMode == ThemeMode.dark ?
-            Color(0xFF7F95D1) : Color(0xffFDECEF)));
+            print(flowerCubit.get(context).isDark);
             return MaterialApp(
 
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 inputDecorationTheme: InputDecorationTheme(),
-                appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark,
-                  statusBarColor:Color(0xFFF0F3BD), systemStatusBarContrastEnforced: true, ), backgroundColor: Color(0xffFDECEF)),
+                appBarTheme: AppBarTheme(backgroundColor: Color(0xffFDECEF)),
                   scaffoldBackgroundColor: Color(0xffFDECEF),
                   textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
                       headline1: TextStyle(color: Color(0xFFC8C2F1)),

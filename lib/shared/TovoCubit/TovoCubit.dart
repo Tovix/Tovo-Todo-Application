@@ -1,5 +1,6 @@
 // imports
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -21,6 +22,7 @@ class flowerCubit extends Cubit<flowerStates>
   flowerCubit() : super(flowerInitialState());
   static flowerCubit get(context) => BlocProvider.of(context);
   // class variables
+  bool isDark = true;
   int isSelected = 1;
   int screenIndex = 0;
   Database? database;
@@ -138,6 +140,7 @@ class flowerCubit extends Cubit<flowerStates>
       print("${username}, ${password}, ${userID}");
       displayUserID = userID;
       TextFail = "";
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xffFDECEF),));
       return true;
     }
     print("${username}, ${password}, ${userID}");
@@ -155,6 +158,7 @@ class flowerCubit extends Cubit<flowerStates>
 
   void signOut()
   {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xffFDECEF),));
     userID = "";
     userNameController.text = cacheHelper.getString("username")!;
     passwordController.text = cacheHelper.getString("password")!;
@@ -511,11 +515,13 @@ class flowerCubit extends Cubit<flowerStates>
     });
   }
 
-  bool isDark = false;
 
   void changeTheme()
   {
     isDark = !isDark;
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: isDark ?
+    Color(0xFF150811) : Color(0xffFDECEF), statusBarColor:isDark ? Color(0xFF5B5B5B): Color(0xFFF0F3BD),
+      statusBarIconBrightness: isDark ? Brightness.dark: Brightness.light));
     emit(flowerChangeTheme());
   }
 
