@@ -20,8 +20,8 @@ class flowerRegister extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<flowerCubit, flowerStates>(builder: (context, state)
-    {return
-      Scaffold(
+    {
+      return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(toolbarHeight: 0,backgroundColor: const Color(0xFFDAD6D6), elevation: 0,) ,
         body: Column(children:

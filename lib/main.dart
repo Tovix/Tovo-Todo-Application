@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
           {
             print(flowerCubit.get(context).isDark);
             return MaterialApp(
-
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 inputDecorationTheme: InputDecorationTheme(),
@@ -66,9 +65,9 @@ class MyApp extends StatelessWidget {
               themeMode: flowerCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
               home: flowerLogin(),
               scrollBehavior: MyBehavior(),
-
         );
-            },listener: (context, state){},) );
+            },
+          listener: (context, state){},) );
   }
 }
 

@@ -403,19 +403,22 @@ Widget defaultTextField(
     {
       required TextEditingController controller, required TextInputType type, required String label, required Icon prefixIcon,
       Widget? suffixIcon, bool obscureText = false, onChange, onSubmit, onTap, inputBorder, validateFunction,
-      hintColor = const Color(0xFF6b54fe), enabledBorder = const UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFF968AD8), width: 2)),
-      focusedBorder = const UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFF968AD8), width: 3))
+      hintColor = const Color(0xFF6b54fe), enabledBorder =
+    const UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFF968AD8), width: 2)),
+      focusedBorder = const UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFF968AD8), width: 3)),
     }) => TextFormField(
   controller: controller,
   decoration: InputDecoration
     (
-      prefixIcon: prefixIcon, suffixIcon: suffixIcon, hintText: label, hintStyle: TextStyle(fontWeight: FontWeight.bold, color: hintColor, fontSize: 14),
+      prefixIcon: prefixIcon, suffixIcon: suffixIcon, hintText: label,
+      hintStyle: TextStyle(fontWeight: FontWeight.bold, color: hintColor, fontSize: 13),
       border: inputBorder,
       enabledBorder: enabledBorder,
       focusedBorder: focusedBorder ,iconColor: Color(0xFF6b54fe),
-      errorStyle: TextStyle(color: Colors.black),
-      focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xff4D506A), width: 2)),
-      errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFF2D3047), width: 3))),
+      errorStyle: TextStyle(color: Colors.black, fontSize: 11),
+      focusedErrorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent, width: 1)),
+      errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent, width: 3))
+  ),
   keyboardType: type, obscureText: obscureText,
   validator: validateFunction,
   onChanged: onChange,
@@ -451,8 +454,7 @@ Route _createRoute(screen) {
 
 void navigateTo(context, screen) => Navigator.of(context).push(_createRoute(screen));
 
-Future chooseImage({source=ImageSource.gallery}) async
-{
+Future chooseImage({source=ImageSource.gallery}) async {
   final ImagePicker picker = ImagePicker();
   var image = await picker.pickImage(source: source);
   List<int> bytes = await (image?.readAsBytes())!;
@@ -460,8 +462,7 @@ Future chooseImage({source=ImageSource.gallery}) async
 }
 
 
-AssetImage returnProfileImage(String username)
-{
+AssetImage returnProfileImage(String username) {
   List alphaLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
     'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   if(alphaLetters.contains(username[0].toLowerCase()) == false)
