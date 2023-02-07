@@ -62,7 +62,7 @@ class flowerLogin extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
                             "assets/images/log2.png",
-                            scale: 1.6,
+                            scale: 1.5,
                           )),
                     ),
                   ),
@@ -79,7 +79,7 @@ class flowerLogin extends StatelessWidget {
                                 Expanded(
                                   flex: 5,
                                   child: Container(
-                                      padding: const EdgeInsets.fromLTRB(20, 35, 20, 0),
+                                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                                       decoration: BoxDecoration(
                                           color: Color(0xffffe8ff),
                                           borderRadius: BorderRadius.circular(15),
@@ -95,6 +95,7 @@ class flowerLogin extends StatelessWidget {
                                                     "${flowerCubit.get(context).TextFail}",
                                                     style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF6b54fe)),
                                                   )),
+                                              // the username and password fields
                                               Expanded(
                                                 flex:3,
                                                 child: Form(
@@ -105,8 +106,12 @@ class flowerLogin extends StatelessWidget {
                                                         child: defaultTextField(
                                                             controller: flowerCubit.get(context).userNameController,
                                                             type: TextInputType.text,
-                                                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Color(0xFF8D7EF3)),borderRadius: BorderRadius.circular(10)),
-                                                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Color(0xFF6b54fe)), borderRadius: BorderRadius.circular(15)),
+                                                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3,
+                                                                color: Color(0xFF8D7EF3)),
+                                                                borderRadius: BorderRadius.circular(10)),
+                                                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 3,
+                                                                color: Color(0xFF6b54fe)),
+                                                                borderRadius: BorderRadius.circular(15)),
                                                             label: "Username",
                                                             prefixIcon: Icon(
                                                               Iconsax.user,
@@ -123,7 +128,8 @@ class flowerLogin extends StatelessWidget {
                                                             controller: flowerCubit.get(context).passwordController,
                                                             type: TextInputType.text,
                                                             enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3,
-                                                                color: Color(0xFF8D7EF3)),borderRadius: BorderRadius.circular(10)),
+                                                                color: Color(0xFF8D7EF3)),
+                                                                borderRadius: BorderRadius.circular(10)),
                                                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 3,
                                                                 color: Color(0xFF6b54fe)), borderRadius: BorderRadius.circular(15)),
                                                             label: "Password",
@@ -148,6 +154,7 @@ class flowerLogin extends StatelessWidget {
                                                   ),
                                                 ),
                                               ),
+                                              // the sign in button
                                               Expanded(
                                                 flex: 1,
                                                 child: Material(
@@ -183,6 +190,7 @@ class flowerLogin extends StatelessWidget {
                                                 ),
                                               ),
                                               SizedBox(height: 15,),
+                                              // the forget password and register buttons
                                               Expanded(
                                                 flex: 1,
                                                 child: Column(children:
@@ -352,13 +360,13 @@ class flowerLogin extends StatelessWidget {
                                             ],
                                           ),
                                         ),
-
                                       ],)
                                   ),
                                 ),
                                 SizedBox(
                                   height: 15,
                                 ),
+                                // the terms of the agreements and usage panel
                                 Expanded(
                                   flex: 2,
                                   child: Container(
@@ -396,8 +404,6 @@ class flowerLogin extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
-
                               ],
                             ),
                           ),

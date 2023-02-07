@@ -140,7 +140,14 @@ class flowerCubit extends Cubit<flowerStates>
       print("${username}, ${password}, ${userID}");
       displayUserID = userID;
       TextFail = "";
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xffFDECEF),));
+      if(!isDark)
+      {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xffFDECEF),));
+      }
+      else
+      {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xFF150811),));
+      }
       return true;
     }
     print("${username}, ${password}, ${userID}");
@@ -158,7 +165,14 @@ class flowerCubit extends Cubit<flowerStates>
 
   void signOut()
   {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xffFDECEF),));
+    if(!isDark)
+    {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xffFDECEF),));
+    }
+    else
+    {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Color(0xFF150811),));
+    }
     userID = "";
     userNameController.text = cacheHelper.getString("username")!;
     passwordController.text = cacheHelper.getString("password")!;

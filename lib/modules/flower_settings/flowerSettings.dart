@@ -121,7 +121,6 @@ class _flowerSettingsState extends State<flowerSettings> {
             ),
           ),
           Padding(
-            
             padding: EdgeInsets.all(20),
             child: Material(
               color: Theme.of(context).scaffoldBackgroundColor,
